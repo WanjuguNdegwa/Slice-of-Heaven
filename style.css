@@ -7,3 +7,8 @@
     color: grey;
     font-style: italic;
 }
+
+.order {
+    display: flex;
+    justify-content: space-between;
+}
