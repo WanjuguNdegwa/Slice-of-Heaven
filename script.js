@@ -97,5 +97,6 @@ $(document).ready(function () {
       $('#location').hide();
       isDelivery = false;
     }
+    $('button#make-order').prop('disabled', false);
   });
 });
