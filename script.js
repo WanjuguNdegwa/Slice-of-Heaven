@@ -152,16 +152,12 @@ $(document).ready(function () {
       </div>
       `);
       sum += 200;
-			
-			if (address) {
-				$('#address').text(address);
-			} else {
-				$('#address').text('Pickup');
-			}
+      $('#address').text(address);
+    } else {
+      $('#address').text('Pickup');
     }
 
-
     $('#total').text(sum);
-    $('#order-summary').show();
+    $('#order-summary-section').show();
 	})
 });

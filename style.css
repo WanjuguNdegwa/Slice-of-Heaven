@@ -13,10 +13,6 @@
     justify-content: space-between;
 }
 
-#order-summary {
-    display: none;
-}
-
 #home {
     position: relative; 
     height: 90vh;
@@ -53,6 +49,16 @@
 }
 
 #order-section {
-    height: 100vh;
+    height: 100%;
+    background-color: #DBCF96;
+}
+
+#order-summary-section {
+    display: none;
+}
+
+footer {
+    font-size: 10px;
+    height: 10vh;
     background-color: #DBCF96;
 }
