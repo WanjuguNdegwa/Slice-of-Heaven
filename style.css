@@ -44,8 +44,12 @@
 }
 
 #about {
-    height: 30vh;
+    height: 40vh;
     background-color: #ECCE8E;
+}
+
+#about img {
+    width: 200px;
 }
 
 #order-section {
