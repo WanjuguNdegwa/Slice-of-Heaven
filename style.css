@@ -21,9 +21,7 @@
     position: relative; 
     height: 90vh;
     width: 100%;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
+    color: white;
 }
 
 #home::before {
@@ -36,4 +34,25 @@
     bottom: 0px;
     left: 0px;
     opacity: 0.75;
+}
+
+#brand {
+    position: relative;
+    margin: auto;
+    text-align: center;
+}
+
+#brand h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 80px;
+}
+
+#about {
+    height: 30vh;
+    background-color: #ECCE8E;
+}
+
+#order-section {
+    height: 100vh;
+    background-color: #DBCF96;
 }
