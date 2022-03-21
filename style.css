@@ -48,6 +48,12 @@
     background-color: #ECCE8E;
 }
 
+@media screen and (max-width: 480px) {
+    #about {
+      height: 70vh;
+    }
+  }
+
 #about img {
     width: 200px;
 }
