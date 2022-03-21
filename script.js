@@ -47,6 +47,7 @@ const pricing = {
 $(document).ready(function () {
 	const pizzas = [];
   let isDelivery;
+	let address;
 
 	$('form').submit(function (event) {
     event.preventDefault();
@@ -93,12 +94,22 @@ $(document).ready(function () {
     if(this.value === 'delivery') {
       $('#location').show();
       isDelivery = true;
+			$('button#make-order').prop('disabled', true);
     } else {
       $('#location').hide();
       isDelivery = false;
+			$('button#make-order').prop('disabled', false);
     }
-    $('button#make-order').prop('disabled', false);
   });
+
+	$('button#add-location').click(function () {
+		address =	$('input[name="location"').val();
+		if (address.length === 0) {
+			alert('Please add an address');
+		} else {
+			$('button#make-order').prop('disabled', false);
+		}
+	})
 
 	$('button#make-order').click(function() {
 		let sum = 0;
@@ -112,7 +123,7 @@ $(document).ready(function () {
         `
       }).join(' ');
 
-      $('#order-summary').append(`
+      $('#order-summary').prepend(`
       <div class="pizza-order">
         <div class="order">
           <span class="d-inline"><strong>${pizza.size} ${pizza.flavor} x${pizza.quantity}</strong></span>
@@ -136,8 +147,15 @@ $(document).ready(function () {
       </div>
       `);
       sum += 200;
-
+			
+			if (address) {
+				$('#address').text(address);
+			} else {
+				$('#address').text('Pickup');
+			}
     }
+
+
     $('#total').text(sum);
     $('#order-summary').show();
 	})
