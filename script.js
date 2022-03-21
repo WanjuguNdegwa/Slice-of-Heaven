@@ -123,7 +123,7 @@ $(document).ready(function () {
         `
       }).join(' ');
 
-      $('#order-summary').prepend(`
+      $('#order-summary').append(`
       <div class="pizza-order">
         <div class="order">
           <span class="d-inline"><strong>${pizza.size} ${pizza.flavor} x${pizza.quantity}</strong></span>
