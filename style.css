@@ -1,3 +1,9 @@
 #delivery-options, #location {
     display: none;
 }
+
+.muted {
+    font-size: small;
+    color: grey;
+    font-style: italic;
+}
