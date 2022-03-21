@@ -7,6 +7,9 @@
     <title>Slice of Heaven</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -30,161 +33,179 @@
         </ul>
       </div>
     </nav>
-  </div>
-  <div id="about">
-    
-  </div>
-  <div class="container" id="order-section">
-    <div class="row">
-      <div class="col-md-6">
-        <form>
-          <select class="form-select mt-3" name="flavor" required>
-            <option value="" disabled selected>Select a flavor</option>
-            <option value="hawaiian">Hawaiian</option>
-            <option value="chicken tikka">Chicken Tikka</option>
-            <option value="bbq steak">BBQ Steak</option>
-          </select>
-          <div class="row my-3">
-            <label class="col-sm-2 col-form-label" for="number">How many?</label>
-            <div class="col-sm-10">
-              <input class="form-control" type="number" name="quantity" id="number" min="1" max="10" required/>
-            </div>
-          </div>
-          <fieldset>
-            <legend>Select size</legend>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="size" id="size-small" value="small" required/>
-              <label class="form-check-label" for="size-small"> Small </label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="size" id="size-medium" value="medium" />
-              <label class="form-check-label" for="size-medium">
-                Medium
-              </label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="size" id="size-large" value="large" />
-              <label class="form-check-label" for="size-large"> Large </label>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>Select crust</legend>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="crust" id="crust-stuffed" value="stuffed" required/>
-              <label class="form-check-label" for="crust-stuffed">
-                Stuffed
-              </label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="crust" id="crust-thick" value="thick" />
-              <label class="form-check-label" for="crust-thick">
-                Thick
-              </label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="crust" id="crust-thin" value="thin" />
-              <label class="form-check-label" for="crust-thin"> Thin </label>
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>Select toppings</legend>
-            <div class="row">
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="toppings" value="bacon" id="topping-bacon" />
-                  <label class="form-check-label" for="topping-bacon">
-                    Bacon
-                  </label>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="toppings" value="mushrooms"
-                    id="topping-mushrooms" />
-                  <label class="form-check-label" for="topping-mushrooms">
-                    Mushrooms
-                  </label>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" name="toppings" value="onions" id="topping-onions" />
-                  <label class="form-check-label" for="topping-onions">
-                    Onions
-                  </label>
-                </div>
-              </div>
-            </div>
-          </fieldset>
-          <button class="btn btn-primary" type="submit">Add Pizza</button>
-          <button class="btn btn-default" type="reset">Clear form</button>
-        </form>
-      </div>
-      <div class="col-md-6">
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Flavor</th>
-              <th scope="col">Size</th>
-              <th scope="col">Crust</th>
-              <th scope="col">Toppings</th>
-              <th scope="col">Cost</th>
-            </tr>
-          </thead>
-          <tbody id="cart">
-            <tr>
-              <td class="text-end" colspan="5"><strong>Subtotal: KES <span id="subtotal"></span></strong></td>
-            </tr>
-          </tbody>
-        </table>
-        <button id="checkout" class="btn btn-primary">Checkout</button>
-        <div id="delivery-options">
-          <fieldset>
-            <legend>Pickup or Delivery?</legend>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="delivery-option" id="pickup" value="pickup" />
-              <label class="form-check-label" for="pickup">
-                Pickup
-              </label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="delivery-option" id="delivery" value="delivery" />
-              <label class="form-check-label" for="delivery">
-                Delivery <span class="muted">+KES 200</span>
-              </label>
-            </div>
-          </fieldset>
-          <div class="row my-3" id="location">
-            <label class="col-sm-2 col-form-label" for="address">Address</label>
-            <div class="col-sm-10">
-              <div class="input-group mb-3">
-                <input class="form-control" type="text" name="location" placeholder="Where should we bring it?"/>
-                <button class="btn btn-primary" type="button" id="add-location">Submit Address</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="d-grid gap-2 mt-3">
-          <button class="btn btn-primary" id="make-order" type="button" disabled>Make Order</button>
-        </div>
+    <div class="container d-flex justify-content-center align-items-center h-75">
+      <div id="brand">
+        <h1>Slice of Heaven</h1>
+        <p>We cook & deliver the tastiest pizzas right away to your designated location</p>
       </div>
     </div>
-    <div class="row mt-5">
-      <div class="col-md-6">
-        <h1>Order Summary</h1>
-        <hr>
-        <div id="order-summary">
+  </div>
+  <div id="about">
+    <div class="container pt-3 px-5">
+      <h2>About Us</h2>
+      <p>Slice of heaven has been in pizza business for over 10 years now and offers a very unique atmosphere for customers
 
-        <div class="order">
-          <h3 class="d-inline">Total</h3><h3 class="d-inline text-end"><span id="total"></span></h3>
+        In addition to home delivery services for all pizza orders and we know that pizza is a family meal which is popular around the world.
+        
+        Slice of Heaven offers affordable prices for pizzas and it's where you feel at home. Slice of Heaven never disappoints!</p>
+    </div>
+  </div>
+  <div id="order-section">
+    <h2 class="text-center">Order Form</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <form>
+            <select class="form-select mt-3" name="flavor" required>
+              <option value="" disabled selected>Select a flavor</option>
+              <option value="hawaiian">Hawaiian</option>
+              <option value="chicken tikka">Chicken Tikka</option>
+              <option value="bbq steak">BBQ Steak</option>
+            </select>
+            <div class="row my-3">
+              <label class="col-sm-2 col-form-label" for="number">How many?</label>
+              <div class="col-sm-10">
+                <input class="form-control" type="number" name="quantity" id="number" min="1" max="10" required/>
+              </div>
+            </div>
+            <fieldset>
+              <legend>Select size</legend>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="size" id="size-small" value="small" required/>
+                <label class="form-check-label" for="size-small"> Small </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="size" id="size-medium" value="medium" />
+                <label class="form-check-label" for="size-medium">
+                  Medium
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="size" id="size-large" value="large" />
+                <label class="form-check-label" for="size-large"> Large </label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Select crust</legend>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="crust" id="crust-stuffed" value="stuffed" required/>
+                <label class="form-check-label" for="crust-stuffed">
+                  Stuffed
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="crust" id="crust-thick" value="thick" />
+                <label class="form-check-label" for="crust-thick">
+                  Thick
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="crust" id="crust-thin" value="thin" />
+                <label class="form-check-label" for="crust-thin"> Thin </label>
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Select toppings</legend>
+              <div class="row">
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="toppings" value="bacon" id="topping-bacon" />
+                    <label class="form-check-label" for="topping-bacon">
+                      Bacon
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="toppings" value="mushrooms"
+                      id="topping-mushrooms" />
+                    <label class="form-check-label" for="topping-mushrooms">
+                      Mushrooms
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="toppings" value="onions" id="topping-onions" />
+                    <label class="form-check-label" for="topping-onions">
+                      Onions
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+            <button class="btn btn-primary" type="submit">Add Pizza</button>
+            <button class="btn btn-default" type="reset">Clear form</button>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Flavor</th>
+                <th scope="col">Size</th>
+                <th scope="col">Crust</th>
+                <th scope="col">Toppings</th>
+                <th scope="col">Cost</th>
+              </tr>
+            </thead>
+            <tbody id="cart">
+              <tr>
+                <td class="text-end" colspan="5"><strong>Subtotal: KES <span id="subtotal"></span></strong></td>
+              </tr>
+            </tbody>
+          </table>
+          <button id="checkout" class="btn btn-primary">Checkout</button>
+          <div id="delivery-options">
+            <fieldset>
+              <legend>Pickup or Delivery?</legend>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="delivery-option" id="pickup" value="pickup" />
+                <label class="form-check-label" for="pickup">
+                  Pickup
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="delivery-option" id="delivery" value="delivery" />
+                <label class="form-check-label" for="delivery">
+                  Delivery <span class="muted">+KES 200</span>
+                </label>
+              </div>
+            </fieldset>
+            <div class="row my-3" id="location">
+              <label class="col-sm-2 col-form-label" for="address">Address</label>
+              <div class="col-sm-10">
+                <div class="input-group mb-3">
+                  <input class="form-control" type="text" name="location" placeholder="Where should we bring it?"/>
+                  <button class="btn btn-primary" type="button" id="add-location">Submit Address</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="d-grid gap-2 mt-3">
+            <button class="btn btn-primary" id="make-order" type="button" disabled>Make Order</button>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-md-6">
+          <h1>Order Summary</h1>
+          <hr>
+          <div id="order-summary">
+
+          
+          
+          
         </div>
         <div>
+          <div class="order">
+            <h3 class="d-inline">Total</h3><h3 class="d-inline text-end"><span id="total"></span></h3>
+          </div>
           <h4>Delivery Details</h4>
           <p><span id="address"></span></p>
         </div>
-        
-      </div>
 
+        </div>
       </div>
     </div>
   </div>
