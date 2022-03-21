@@ -64,12 +64,16 @@ $(document).ready(function () {
     const pizza = new Pizza(flavor, quantity, size, crust, toppings);
     pizzas.push(pizza);
 
+    let toppingsHTML = pizza.toppings.map(function (topping) {
+      return `${topping} <span class="muted">+${pricing[topping]}</span>`
+    })
     const order = `
     <tr>
-      <td>${pizza.flavor} </td>
-      <td>${pizza.size} </td>
-      <td>${pizza.crust} </td>
-      <td>${pizza.toppings.join('<br>')}</td>
+      <td>${pizza.flavor}</td>
+      <td>${pizza.size} <span class="muted">${pricing[pizza.flavor][pizza.size]}</span></td>
+      <td>${pizza.crust} <span class="muted">+${pricing[pizza.crust]}</span></td>
+      <td>${toppingsHTML.join('<br>')}</td>
+      <td>x${pizza.quantity}</td>
       <td>${pizza.cost}</td>
     </tr>
     `
@@ -107,6 +111,7 @@ $(document).ready(function () {
 		if (address.length === 0) {
 			alert('Please add an address');
 		} else {
+      alert(`Your order will be delivered to ${address}`)
 			$('button#make-order').prop('disabled', false);
 		}
 	})
@@ -118,7 +123,7 @@ $(document).ready(function () {
         return `
         <div class="order text-muted">
           <span class="d-inline ms-3">${topping}</span>
-          <span class="d-inline text-end">${pricing[topping]}</span>
+          <span class="d-inline text-end">${pricing[topping] * pizza.quantity}</span>
         </div>
         `
       }).join(' ');
@@ -127,11 +132,11 @@ $(document).ready(function () {
       <div class="pizza-order">
         <div class="order">
           <span class="d-inline"><strong>${pizza.size} ${pizza.flavor} x${pizza.quantity}</strong></span>
-          <span class="d-inline text-end">${pricing[pizza.flavor][pizza.size]}</span>
+          <span class="d-inline text-end">${pricing[pizza.flavor][pizza.size] * pizza.quantity}</span>
         </div>
         <div class="order text-muted">
           <span class="d-inline ms-3">${pizza.crust} Crust</span>
-          <span class="d-inline text-end">${pricing[pizza.crust]}</span>
+          <span class="d-inline text-end">${pricing[pizza.crust] * pizza.quantity}</span>
         </div>
         ${toppings}
       </div>
