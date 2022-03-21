@@ -99,4 +99,46 @@ $(document).ready(function () {
     }
     $('button#make-order').prop('disabled', false);
   });
+
+	$('button#make-order').click(function() {
+		let sum = 0;
+    pizzas.forEach(function (pizza) {
+      let toppings = pizza.toppings.map(function (topping) {
+        return `
+        <div class="order text-muted">
+          <span class="d-inline ms-3">${topping}</span>
+          <span class="d-inline text-end">${pricing[topping]}</span>
+        </div>
+        `
+      }).join(' ');
+
+      $('#order-summary').append(`
+      <div class="pizza-order">
+        <div class="order">
+          <span class="d-inline"><strong>${pizza.size} ${pizza.flavor} x${pizza.quantity}</strong></span>
+          <span class="d-inline text-end">${pricing[pizza.flavor][pizza.size]}</span>
+        </div>
+        <div class="order text-muted">
+          <span class="d-inline ms-3">${pizza.crust} Crust</span>
+          <span class="d-inline text-end">${pricing[pizza.crust]}</span>
+        </div>
+        ${toppings}
+      </div>
+      `);
+
+      sum += pizza.cost;
+    });
+
+    if (isDelivery) {
+      $('#order-summary').append(`
+      <div class="order text-muted">
+        <span class="d-inline">Delivery Fee</span><span class="d-inline text-end">200</span>
+      </div>
+      `);
+      sum += 200;
+
+    }
+    $('#total').text(sum);
+    $('#order-summary').show();
+	})
 });
