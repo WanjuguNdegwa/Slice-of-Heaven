@@ -46,6 +46,7 @@ const pricing = {
 
 $(document).ready(function () {
 	const pizzas = [];
+  let isDelivery;
 
 	$('form').submit(function (event) {
     event.preventDefault();
@@ -78,5 +79,23 @@ $(document).ready(function () {
     }, 0);
 
     $('#subtotal').text(subtotal);
+  });
+
+	$('button#checkout').click(function () {
+    if (pizzas.length === 0) {
+      alert('Please order at least one pizza');
+    } else {
+      $('#delivery-options').show();
+    }
+  });
+
+	$('input[name=delivery-option]').on('change', function () {
+    if(this.value === 'delivery') {
+      $('#location').show();
+      isDelivery = true;
+    } else {
+      $('#location').hide();
+      isDelivery = false;
+    }
   });
 });
