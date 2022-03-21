@@ -19,3 +19,27 @@ class Pizza {
 		return sum * this.quantity;
 	}
 }
+
+const pricing = {
+  hawaiian: {
+    small: 700,
+    medium: 850,
+    large: 1000,
+  },
+  "chicken tikka": {
+    small: 800,
+    medium: 1000,
+    large: 1200,
+  },
+  "bbq steak": {
+    small: 800,
+    medium: 1000,
+    large: 1200,
+  },
+  thin: 0,
+  thick: 100,
+  stuffed: 200,
+  bacon: 50,
+  mushrooms: 50,
+  onions: 50,
+};
