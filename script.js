@@ -43,3 +43,40 @@ const pricing = {
   mushrooms: 50,
   onions: 50,
 };
+
+$(document).ready(function () {
+	const pizzas = [];
+
+	$('form').submit(function (event) {
+    event.preventDefault();
+    const flavor = $('select[name="flavor"]').val();
+    const quantity = $('input[name="quantity"]').val();
+    const crust = $('input[name="crust"]:checked').val();
+    const size = $('input[name="size"]:checked').val();
+    const toppings = [];
+
+    $('input[name="toppings"]:checked').each(function () {
+      toppings.push(this.value);
+    });
+
+    const pizza = new Pizza(flavor, quantity, size, crust, toppings);
+    pizzas.push(pizza);
+
+    const order = `
+    <tr>
+      <td>${pizza.flavor} </td>
+      <td>${pizza.size} </td>
+      <td>${pizza.crust} </td>
+      <td>${pizza.toppings.join('<br>')}</td>
+      <td>${pizza.cost}</td>
+    </tr>
+    `
+
+    $('tbody').prepend(order);
+    const subtotal = pizzas.reduce((previous, current) => {
+      return previous + current.cost
+    }, 0);
+
+    $('#subtotal').text(subtotal);
+  });
+});
